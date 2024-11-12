@@ -20,19 +20,31 @@ Once you've created a project and installed dependencies with `npm install` (or 
 
 ```bash
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
+Needed additional packages:
+```npm install lucide-svelte
+npm install mode-watcher
+npx  shadcn-svelte@latest init
+npm install postcss (unsure if really needed)
 ```
+and of course, tailwind ...
 
-You can preview the production build with `npm run preview`.
+### FOR TOMAS
+Hi Tomas,
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+Brief introduction:
+
+You have one connect button and right top corner a theme toggler.
+
+Switch to dark/light mode is persistent using cookies. The cookies are evaluate in +layout.server.js, and compared with current app settings in the appStore. If they differ, settings in the cookie are updated. Finally, on each settings change, the view mode is set in the client, her using the package modewatcher.
+
+Following the same logic, I use the theme setting (coming from the cookie, sent from the server to the client) to initialize the appKit (modal) in +layout.svelte -> onMount.
+
+You can reload the page and the modal`s theme will stay persistently in the view mode chosen.
+
+My intension is to use the same strategy with the web3 connections settings / wagmi settings,
+
+Advantage for me: I can evaluate some rudimentary wagmi properties server side, reading them from the cookie. Especially the connection state, defining if the user is logged in, is nice to have on the server, since I can then redirect all other pages, but the root, back to the root, if not logged in.
+
+I calling the start page while logged would redirect (on the server) to the /dashboard route, as I have no implemented on teh client after connecting.
