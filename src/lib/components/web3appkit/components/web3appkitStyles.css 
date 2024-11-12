@@ -1,0 +1,33 @@
+.appkit-button {
+    /*
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    */
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 0.5rem !important;
+    border: none;
+    /* background: hsl(var(--third-background, 0, 0%, 61%)); */
+    background: transparent;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    border: 1px solid transparent;
+    color: hsl(var(--foreground, 0, 0%, 61%));
+    transition: all 0.2s;
+    width: 100%;
+    padding-left: 0.375rem;
+}
+
+.appkit-button:hover {
+    background-color: hsl(var(--hover-bg, 0, 0%, 5%));
+    color: hsl(var(--hover, var(--foreground, 0, 0%, 40%)));
+}
+
+.appkit-button.active {
+    background-color: hsl(var(--active-bg, 0, 0%, 5%));
+    color: hsl(var(--active, var(--secondary, 0, 0%, 40%)));
+    border-radius: var(--border-radius);
+    box-shadow: 1px 2px 3px hsl(var(--shadow));
+}

@@ -1,0 +1,33 @@
+// Define your central variables (color palette, spacing, etc.)
+$background: hsl(var(--background));
+$foreground: hsl(var(--foreground));
+$primary: hsl(var(--primary));
+$secondary: hsl(var(--secondary));
+$secondary-background: hsl(var(--secondary-background));
+$muted: hsl(var(--muted));
+$accent: hsl(var(--accent));
+$accent-fg: hsl(var(--accent-foreground));
+$hover: hsl(var(--hover));
+$hover-bg: hsl(var(--hover-bg));
+$action: hsl(var(--action));
+$action-fg: hsl(var(--action-foreground));
+$border: hsl(var(--border));
+$input: hsl(var(--input));
+$border-color: hsl(var(--border));
+$border-radius: var(--border-radius);
+$brand-color: hsl(var(--main-brand-color));
+$shadow: hsl(var(--shadow));
+$logo-url: var(--logo-url);
+$main-bg-image-url: var(--main-bg-image-url);
+$main-bg: var(--main-bg-color);
+$main-bg-filter: var(--main-bg-filter);
+$main-bg-opacity: var(--main-bg-opacity);
+$menu-bg-opacity: var(--menu-bg-opacity);
+$menu-bg: var(--menu-bg-color);
+
+// Define variables for light and dark themes (if using dark mode)
+$dark-background: hsl(var(--background), 0.95);
+$dark-foreground: hsl(var(--foreground), 0.9);
+$dark-primary: hsl(var(--primary), 1);
+$dark-secondary: hsl(var(--secondary), 0.8);
+$dark-secondary-background: hsl(var(--background), 0.95);

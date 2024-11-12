@@ -1,0 +1,65 @@
+@use 'variables.scss';
+
+/***********************/
+/* scss functions      */
+/***********************/
+
+/*************************************/
+/* STANDARD MODE = LIGHT MODE        */
+/*************************************/
+
+/*************************************/
+/* DASHBOARD LAYOUT                  */
+/*************************************/
+
+.main-content {
+    background-color: hsla(variables.$main-bg, variables.$main-bg-opacity)  !important;
+}
+ 
+/*************************************/
+/* GENERAL STYLES                    */
+/*************************************/
+
+.bg-secondary {
+    background-color: variables.$secondary-background;
+}
+.brand {
+    color: variables.$brand-color;
+    font-weight: 500;
+}
+
+.connect {
+    color: white !important;
+}
+
+/*************************************/
+/* FORMS STYLES                      */
+/*************************************/
+
+input {
+    background-color: variables.$background;
+    color: variables.$foreground;
+}
+
+/*************************************/
+/* REOWN - WALLETCONNECT             */
+/*************************************/
+
+.appkit-button {
+    box-shadow: 2px 3px 3px variables.$shadow;
+}
+
+.appkit-button.large {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+}
+
+/*************************************/
+/* DARK MODE = ADDITIONAL STYLE      */
+/*************************************/
+
+.dark {
+    .sidebar {
+        border-right: 1px solid variables.$dark-background;
+    }
+}

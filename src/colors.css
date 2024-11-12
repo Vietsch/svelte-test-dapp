@@ -1,0 +1,68 @@
+:root {
+/**************************************************/
+/* Color Scheme for Dashboard                     */
+/* created with: http://colormind.io/bootstrap/   */
+/* and: https://htmlcolors.com/rgb-to-hsl         */
+/**************************************************/
+
+
+/* Basic colors */
+
+--main-light: 0  0%  99%;
+--main-light-raw: 0, 0%, 99%;
+--main-dark: 225  24%  7%;
+--main-dark-raw: 225, 24%, 7%;
+--light-shades-alt: 340  14%  96%;
+--light-shades-alt-raw: 340, 14%, 96%;
+--light-shades: 227 16.7% 83.5%;
+--light-shades-raw: 227, 16.7%, 83.5%;
+--main-brand-color: 209  57%  46%;
+--main-brand-color-raw: 209, 57%, 46%;
+--dark-accent: 233  4%  49%;
+--dark-accent-raw: 233, 4%, 49%;
+--dark-shades: 225  27%  17%;
+--dark-shades-raw: 225, 27%, 17%;
+
+/* Functional Colors */
+
+--action: 209  57%  46%;
+--action-raw: 209, 57%, 46%;
+--info: 225  27%  17%;
+--info-raw: 225, 27%, 17%;
+--success: 118  56%  46%;
+--success-raw: 118, 56%, 46%;
+--warning: 38  56%  49%;
+--warning-raw: 38, 56%, 49%;
+--danger: 358  56%  46%;
+--danger-raw: 358, 56%, 46%;
+
+/* Tones and Shades                                                           */
+
+/* created from base colors with: https://colorffy.com/color-scheme-generator */
+
+--light-shades-2: 330  4%  89%;
+--light-shades-2-raw: 330, 4%, 89%;
+--light-shades-3: 0  2%  82%;
+--light-shades-3-raw: 0, 2%, 82%;
+--dark-shades-2: 229  15%  28%;
+--dark-shades-2-raw: 229, 15%, 28%;
+--dark-shades-3: 227  10%  39%;
+--dark-shades-3-raw: 227, 10%, 39%;
+--main-color-darker: 208  53%  40%;
+--main-color-darker-raw: 208, 53%, 40%;
+--main-color-lighter: 210  46%  55%;
+--main-color-lighter-raw: 210, 46%, 55%;
+
+/* Double Split Complementary Colors */
+
+/* created from base colors with: https://colorffy.com/color-scheme-generator */
+
+--complement-1: 178  56%  46%;
+--complement-1-raw: 178, 56%, 46%;
+--complement-2: 238  56%  46%;
+--complement-2-raw: 238, 56%, 46%;
+--complement-3: 28  56%  46%;
+--complement-3-raw: 28, 56%, 46%;
+--complement-4: 58  56%  46%;
+--complement-4-raw: 58, 56%, 46%;
+}
