@@ -48,3 +48,9 @@ My intension is to use the same strategy with the web3 connections settings / wa
 Advantage for me: I can evaluate some rudimentary wagmi properties server side, reading them from the cookie. Especially the connection state, defining if the user is logged in, is nice to have on the server, since I can then redirect all other pages, but the root, back to the root, if not logged in.
 
 I calling the start page while logged would redirect (on the server) to the /dashboard route, as I have no implemented on teh client after connecting.
+
+**Update 2024-11-12:**
+
+I had a look at the source code of wagmi/core and found that cookieToInitialState should do the job I was doing "manually". The initialState is successfully reaching the intializeAppKit funciton. See console.log to check.
+
+Still no reconnection.
