@@ -39,7 +39,7 @@ You have one connect button and right top corner a theme toggler.
 
 Switch to dark/light mode is persistent using cookies. The cookies are evaluate in +layout.server.js, and compared with current app settings in the appStore. If they differ, settings in the cookie are updated. Finally, on each settings change, the view mode is set in the client, her using the package modewatcher.
 
-Following the same logic, I use the theme setting (coming from the cookie, sent from the server to the client) to initialize the appKit (modal) in +layout.svelte -> onMount.
+Following the same logic, I use the theme setting (coming from the cookie, sent from the server to the client) to initialize the appKit (modal) in +layout.svelte - onMount.
 
 You can reload the page and the modal`s theme will stay persistently in the view mode chosen.
 
