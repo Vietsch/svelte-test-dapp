@@ -1,7 +1,7 @@
 import getCssVariablesFromFile from '$lib/js/server/extractCssVariables';
 import { APPKIT_PROJECT_ID } from '$env/static/private';
 import { redirect } from '@sveltejs/kit';
-import { cookieToInitialState, WagmiProvider } from 'wagmi';
+import { cookieToInitialState } from '@wagmi/core';
 import { wagmiAdapter } from '$lib/components/web3appkit/appKit';
 
 
@@ -20,13 +20,21 @@ export const load = async ({ url, cookies, request }) => {
   // const initialState = cookieToInitialState(wagmiAdapter.wagmiConfig as Config, cookies)
 
   // Parsing wagmi store cookie if it exists
-  let wagmiState = null;
+
+  const cookieString = request.headers.get('cookie');
+
+  // let wagmiState = null;
   const wagmiStoreCookie = cookies.get('wagmi.store');
-  if (wagmiStoreCookie) {
+  // Define your config for wagmi's cookie key, adjusting storage key if necessary
+  const config = { storage: { key: 'wagmi' } };
+  const initialWagmiState = cookieToInitialState(config, cookieString);
+
+  console.log("initialWagmiState", initialWagmiState);
+
+  if (initialWagmiState) {
     try {
-      wagmiState = JSON.parse(wagmiStoreCookie);
       // Check if there are any active connections
-      const hasActiveConnection = wagmiState?.state?.connections?.value?.length > 0;
+      const hasActiveConnection = initialWagmiState?.connections?.value?.length > 0;
       
       // Update isLoggedIn based on wagmi connection state
       if (hasActiveConnection) {
@@ -94,6 +102,6 @@ export const load = async ({ url, cookies, request }) => {
     generalSettings,
     cssVariables,
     projectConfig,
-    wagmiState
+    initialWagmiState
   };
 };

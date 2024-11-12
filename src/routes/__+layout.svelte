@@ -19,7 +19,7 @@ return settings;
 
 onMount(async () => {
     // Run appInit after the DOM is ready
-    const { generalSettings, cssVariables, projectConfig, wagmiState } = data;
+    const { generalSettings, cssVariables, projectConfig, initialWagmiState } = data;
 
     console.log("");
     console.log("----------------------------------------");
@@ -29,14 +29,14 @@ onMount(async () => {
     console.log("generalSettings", generalSettings);
     console.log("cssVariables", cssVariables);
     console.log("projectConfig", projectConfig);
-    console.log("wagmiState", wagmiState);
+    console.log("initialWagmiState", initialWagmiState);
 
 
     console.log("wagmiAdapter", wagmiAdapter ? wagmiAdapter : {});
     console.log("wagmiAdapter.getIsConnectedState", wagmiAdapter ? wagmiAdapter.appKit.getIsConnectedState() : false);
     /*
-    if (wagmiState) {
-        wagmiStore.set(data.wagmiState);
+    if (initialWagmiState) {
+        wagmiStore.set(data.initialWagmiState);
     }
     */
 
@@ -59,7 +59,7 @@ onMount(async () => {
 
 
     try {
-        await initializeAppKit(appKitConfig, wagmiState);
+        await initializeAppKit(appKitConfig, initialWagmiState);
         // Store references if needed
     } catch (error) {
         console.error('Failed to initialize AppKit:', error);

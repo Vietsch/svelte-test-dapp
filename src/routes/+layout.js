@@ -16,7 +16,7 @@ export const load = async ({ data }) => {
   console.log("Client side preprocessing (+layout.js)");
   console.log("----------------------------------------");
 
-  const { generalSettings, projectConfig } = data;
+  const { generalSettings } = data;
 
   // 1. check if generalsettings from cookie or other detections (like language) are different from the stored settings  
   const currentGeneralSettings = get(appSettings).general;

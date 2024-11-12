@@ -37,7 +37,7 @@ export async function initializeAppKit(config, state = null) {
   }
   */
 
-  console.log("Defining Wagmi Adapater with intialState ", JSON.stringify(state));
+  console.log("Defining Wagmi Adapater with intialState ", state);
 
   // Initialize wagmi adapter with saved state if available
   wagmiAdapter = new WagmiAdapter({
@@ -46,7 +46,7 @@ export async function initializeAppKit(config, state = null) {
     storage: createStorage({
       storage: cookieStorage
     }),
-    state
+    state: state || {}
   });
 
   if (!isInitialized) {
@@ -76,24 +76,23 @@ export async function initializeAppKit(config, state = null) {
       ]
     });
 
+
+    // debugging 
     console.log(wagmiAdapter);
-
-//     console.log("Current connections:", await wagmiAdapter.getConnections());
-
-    let s = await wagmiAdapter.connectionControllerClient;
-    console.log("getClient:", s);
 
     const wagmiState = await wagmiAdapter.wagmiConfig.state;
     console.log("Current wagmiState:", wagmiState);
-
     console.log("initial connection state", wagmiAdapter.appKit.getIsConnectedState());
 
+    
+    // event subscription as watcher
     modal.subscribeEvents(async (event) => {
       console.log("AppKit Event:", event);
 
 
       const isConnected = wagmiAdapter.appKit.getIsConnectedState();
       const currentRoute = get(appSettings).general.currentRoute;
+
       /*
       // Update wagmi store state
       const currentState = await wagmiAdapter.appKit.adapter.appKit.getState();
