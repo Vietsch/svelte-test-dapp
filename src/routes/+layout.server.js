@@ -12,6 +12,9 @@ export const load = async ({ url, cookies, request }) => {
   console.log("Server side preprocessing (+layout.server.js)");
   console.log("----------------------------------------");
 
+  const currentPath = url.pathname;
+  console.log("currentPath", currentPath);
+
   // reading all cookies
   const allCookies = cookies.getAll();
   console.log("All cookies: " + allCookies.length);
@@ -24,33 +27,16 @@ export const load = async ({ url, cookies, request }) => {
   const cookieString = request.headers.get('cookie');
 
   // let wagmiState = null;
-  const wagmiStoreCookie = cookies.get('wagmi.store');
+  // const wagmiStoreCookie = cookies.get('wagmi.store');
   // Define your config for wagmi's cookie key, adjusting storage key if necessary
   const config = { storage: { key: 'wagmi' } };
   const initialWagmiState = cookieToInitialState(config, cookieString);
 
   console.log("initialWagmiState", initialWagmiState);
 
+  let hasActiveConnection = false;
   if (initialWagmiState) {
-    try {
-      // Check if there are any active connections
-      const hasActiveConnection = initialWagmiState?.connections?.value?.length > 0;
-      
-      // Update isLoggedIn based on wagmi connection state
-      if (hasActiveConnection) {
-        cookies.set('isLoggedIn', 'true', {
-          path: '/',
-          maxAge: 60 * 60 * 24 * 365 // 1 year
-        });
-      } else {
-        cookies.set('isLoggedIn', 'false', {
-          path: '/',
-          maxAge: 60 * 60 * 24 * 365
-        });
-      }
-    } catch (error) {
-      console.error('Failed to parse wagmi.store cookie:', error);
-    }
+      hasActiveConnection = initialWagmiState.connections.size > 0;
   }
 
   // Log each cookie's name and value
@@ -58,8 +44,8 @@ export const load = async ({ url, cookies, request }) => {
     console.log(`Cookie: ${name} = ${value}`);
   });
   
-  const isLoggedIn = cookies.get('isLoggedIn') === 'true';
-  const currentPath = url.pathname;
+  // const isLoggedIn = cookies.get('isLoggedIn') === 'true';
+  const isLoggedIn = hasActiveConnection; 
 
   if (currentPath !== '/')
   {

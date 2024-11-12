@@ -76,7 +76,20 @@ export async function initializeAppKit(config, state = null) {
       ]
     });
 
+    // Call reconnect to attempt to restore connection using saved state
+    try {
+      const connections = await reconnect(wagmiAdapter.wagmiConfig);
+      console.log("Reconnected with connections:", connections);
 
+      if (connections.length > 0) {
+        console.log("Connection restored successfully");
+      } else {
+        console.log("No previous connections found, manual connection required");
+      }
+    } catch (error) {
+      console.error("Reconnection failed:", error);
+    }
+    
     // debugging 
     console.log(wagmiAdapter);
 
@@ -84,7 +97,7 @@ export async function initializeAppKit(config, state = null) {
     console.log("Current wagmiState:", wagmiState);
     console.log("initial connection state", wagmiAdapter.appKit.getIsConnectedState());
 
-    
+
     // event subscription as watcher
     modal.subscribeEvents(async (event) => {
       console.log("AppKit Event:", event);
@@ -120,7 +133,8 @@ export async function initializeAppKit(config, state = null) {
 
     // Subscribe to modal state changes
     modal.subscribeState(newState => {
-      if (newState.open && openCallback !== undefined) {
+      if (newState.open && openCallback !== undefined && openCallback !== null) {
+
         const callback = openCallback;
         openCallback = null;
 
