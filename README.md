@@ -54,3 +54,9 @@ I calling the start page while logged would redirect (on the server) to the /das
 I had a look at the source code of wagmi/core and found that cookieToInitialState should do the job I was doing "manually". The initialState is successfully reaching the intializeAppKit funciton. See console.log to check.
 
 Still no reconnection.
+
+**Update 2024-11-12:**
+
+I added reconnect method from @wagmi/core
+
+**Now it works!**
